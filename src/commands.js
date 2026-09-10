@@ -54,6 +54,15 @@ function dropdownOption(id, label, choices, defaultValue, options = {}) {
 	}
 }
 
+function valueCommand(id, name, path, value, type = 'i') {
+	return {
+		id,
+		name,
+		options: [],
+		buildMessages: () => [{ path, type, value }],
+	}
+}
+
 function triggerCommand(id, name, path) {
 	return {
 		id,
@@ -391,6 +400,8 @@ module.exports = [
 	triggerCommand('bpmtap', 'BPM Tap', '/beyond/general/BeatTap'),
 	triggerCommand('laserenable', 'Enable Output', '/beyond/general/enablelaseroutput'),
 	triggerCommand('laserdisable', 'Disable Output', '/beyond/general/disablelaseroutput'),
+	valueCommand('dmxinenable', 'Enable DMX input', '/beyond/general/EnableDmxIn', 1, 'f'),
+	valueCommand('dmxindisable', 'Disable DMX input', '/beyond/general/EnableDmxIn', 0, 'f'),
 	triggerCommand('Blackout', 'Blackout', '/beyond/general/blackout'),
 	triggerCommand('onecue', 'One cue', '/beyond/general/onecue'),
 	triggerCommand('multicue', 'Multi cue', '/beyond/general/multicue'),
