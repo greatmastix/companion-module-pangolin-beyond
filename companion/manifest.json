@@ -12,6 +12,9 @@
 	"maintainers": [
 		{
 			"name": "Nijs Jonas"
+		},
+		{
+		"name": "Mastix"
 		}
 	],
 	"runtime": {
