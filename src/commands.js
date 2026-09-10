@@ -302,6 +302,58 @@ module.exports = [
 		},
 	},
 	{
+		id: 'stopclip',
+		name: 'Stop clip',
+		options: [
+			{
+				type: 'checkbox',
+				id: 'use_specific_clip',
+				label: 'Stop a specific clip',
+				default: false,
+			},
+			{
+				...integerOption('page_value', 'Page', 1, {
+					minValue: 1,
+					tooltip: 'Page number to focus before stopping the clip.',
+				}),
+				isVisible: (options) => options.use_specific_clip === true,
+				isVisibleExpression: '$(options:use_specific_clip) === true',
+			},
+			{
+				...integerOption('cell_value', 'Cell', 1, {
+					minValue: 1,
+					tooltip: 'Cell number to focus before stopping the clip.',
+				}),
+				isVisible: (options) => options.use_specific_clip === true,
+				isVisibleExpression: '$(options:use_specific_clip) === true',
+			},
+		],
+		buildMessages: (options) => {
+			if (options.use_specific_clip) {
+				return [
+					{
+						path: '/beyond/general/FocusCell',
+						args: [
+							{ type: 'i', value: options.page_value },
+							{ type: 'i', value: options.cell_value },
+						],
+					},
+					{
+						path: '/beyond/general/StopCell',
+						args: [],
+					},
+				]
+			}
+
+			return [
+				{
+					path: '/beyond/general/StopCell',
+					args: [],
+				},
+			]
+		},
+	},
+	{
 		id: 'bpm',
 		name: 'BPM',
 		options: [integerOption('bpm_value', 'BPM', 60)],

@@ -9,6 +9,7 @@ Configure the target host and UDP port to match the OSC server settings in Pango
 - Brightness
 - Select clip
 - Start clip
+- Stop clip
 - BPM
 - Select FX slot
 - Live Control parameter
@@ -39,6 +40,7 @@ Configure the target host and UDP port to match the OSC server settings in Pango
 
 - This module sends the same OSC commands as the legacy module, including the `/beyond/...` and `/b/...` paths used there.
 - `Start clip` can now optionally focus a specific page and cell first, then trigger `StartCell`.
+- `Stop clip` stops the focused grid cell, or can focus a specific page and cell first and then trigger `StopCell`.
 - `Select FX slot` targets `/beyond/master/livecontrol/fx1` through `fx4`. Effect layer accepts `1..4`, and effect slot accepts `-1..47` where `-1` stops the current effect.
 - The Live Control actions target `/beyond/master/livecontrol/...` and cover the full practical master live control set for single-value parameters plus the 2-value `size/pos` variants.
 - `Custom OSC command` lets you paste any OSC address and optional arguments. Argument parsing is variable-friendly: integers send as `i`, decimal numbers as `f`, and text as `s`. Quote strings that contain spaces.
